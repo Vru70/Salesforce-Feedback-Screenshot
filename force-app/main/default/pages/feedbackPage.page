@@ -6,7 +6,7 @@
   Ver   Date         Author             Modification
   1.0   05-07-2021   Vrushabh Uprikar   Initial Version
 -->
-<apex:page showHeader="false" controller="sendEmailWithImage">
+<apex:page showHeader="false" sidebar="false"controller="sendEmailWithImage">
     <apex:form id="frm">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
 
