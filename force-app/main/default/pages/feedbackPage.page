@@ -1,0 +1,45 @@
+<!--
+  @author            : Vrushabh Uprikar
+  @last modified on  : 05-07-2021
+  @last modified by  : Vrushabh Uprikar
+  Modifications Log 
+  Ver   Date         Author             Modification
+  1.0   05-07-2021   Vrushabh Uprikar   Initial Version
+-->
+<apex:page showHeader="false" controller="sendEmailWithImage">
+    <apex:form id="frm">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+
+        <div class="container" id="mapDiv">
+            <div class="jumbotron">
+                <h1>TEST SCREENSHOT PAGE</h1>
+                
+            </div>
+        </div>
+
+        <button onclick="callActionFunction()">SendEmail</button>
+        <apex:actionFunction action="{!sendEmail}" name="sendEmailAF" rerender="frm">
+            <apex:param assignTo="{!strImageBlob}" name="imageBlob" value="" />
+        </apex:actionFunction>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+
+        <script type="text/javascript">
+            window.onload = function () {
+                html2canvas(document.body,
+                    {
+                        useCORS: true,
+                        onrendered: function (canvas) {
+                            document.body.appendChild(canvas);
+                            document.getElementById("mapDiv").style.display = 'none';
+                        }
+                    });
+            }
+            //
+            function callActionFunction() {
+                sendEmailAF(document.getElementsByTagName('canvas')[0].toDataURL());
+            }
+
+        </script>
+    </apex:form>
+</apex:page>
